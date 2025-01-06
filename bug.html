@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text will be replaced.
+  </div>
+
+  <script>
+    //Incorrectly attempting to use innerHTML on an element that doesn't exist yet.
+    document.getElementById('myDiv').innerHTML = "<p>This is a paragraph.</p>";
+
+    //Correct way:  Wait for DOMContentLoaded to ensure the element exists before manipulating it.
+     document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('myDiv').innerHTML = "<p>This is a paragraph.</p>";
+      });
+  </script>
+</body>
+</html>
